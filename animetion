@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Animation</title>
+  <style>
+    #ball {
+      width: 30px;
+      height: 30px;
+      background-color: red;
+      border-radius: 50%;
+      position: absolute;
+      top: 100px;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div id="ball"></div>
+
+<script>
+  let ball = document.getElementById("ball");
+  let x = 0;
+  let speed = 2;
+
+  function animate() {
+    x += speed;
+
+    if (x > window.innerWidth - 30 || x < 0) {
+      speed = -speed; 
+    }
+
+    ball.style.left = x + "px";
+
+    requestAnimationFrame(animate); 
+  }
+
+  animate(); 
+</script>
+
+</body>
+</html>
