@@ -1,0 +1,6 @@
+component in react is a java function which is used to describe a piece of ui (user input) it returns a react element in form of jsx we can say that it is a bl;ue print to create a componmet enstenceses 
+react element react excecutes the code in each of these instances and eacj of them will return one or more react element 
+rendering in react virtual dom 
+fiber tree
+ reconliation  
+diffing
