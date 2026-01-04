@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h2>Student Registration Form</h2>
+
+<form action="/submit" method="post">
+    <input type="text" name="name" placeholder="Enter Name"><br>
+    <input type="email" name="email" placeholder="Enter Email"><br>
+    <input type="number" name="age" placeholder="Enter Age"><br>
+    <button type="submit">Register</button>
+</form>
+
+</body>
+</html>
