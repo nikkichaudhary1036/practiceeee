@@ -1,0 +1,26 @@
+from flask import Flask, render_template, request
+
+app = Flask(__name__)
+
+@app.route('/')
+def form():
+    return render_template('form.html')
+
+@app.route('/submit', methods=['POST'])
+def submit():
+    name = request.form['name']
+    email = request.form['email']
+    age = request.form['age']
+
+    if name == "" or email == "" or age == "":
+        return "All fields are required!"
+
+    return f"""
+    <h2>Registration Successful</h2>
+    <p>Name: {name}</p>
+    <p>Email: {email}</p>
+    <p>Age: {age}</p>
+    """
+
+if __name__ == '__main__':
+    app.run(debug=True)
