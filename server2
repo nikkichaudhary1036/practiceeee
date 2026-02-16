@@ -1,0 +1,15 @@
+const http =require("http");
+const server = http.createServer((req, res) => {
+    const url = req.url;
+    const method = req.method;
+    console.log(url, method);
+
+    if(url == "/" && method == 'GET'){
+        res.end();
+    }
+});
+
+server.listen(3000, () =>{
+    console.log(`address of the port`);
+});
+
