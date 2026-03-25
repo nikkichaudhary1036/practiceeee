@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Rural Grievance Portal</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #2c7be5, #6ea8fe);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Logo section */
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Logo image */
+    .logo-section img {
+      width: 40px;
+      height: 40px;
+    }
+
+    /* Website name */
+    .logo-section h2 {
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .login-container {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .login-card {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: gray;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      background: #2c7be5;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1a5fd1;
+    }
+
+    .note {
+      font-size: 12px;
+      color: red;
+      text-align: center;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+
+<div class="navbar">
+  <div class="logo-section">
+    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="logo">
+    <h2>E-gram SAARTHI</h2>
+  </div>
+</div>
+
+<div class="login-container">
+  <div class="login-card">
+    <h2>Login</h2>
+    <p class="subtitle">Access Rural Grievance Portal</p>
+
+    <form onsubmit="return validateForm()">
+      <label>Full Name</label>
+      <input type="text" id="name" placeholder="Enter your name" required>
+
+      <label>Age (18+ only)</label>
+      <input type="number" id="age" placeholder="Enter your age" required>
+
+      <label>Phone Number</label>
+      <input type="tel" id="phone" placeholder="Enter 10 digit phone number" required>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <p class="note">* Only citizens above 18 can access this portal</p>
+  </div>
+</div>
+
+<script>
+function validateForm() {
+  const name = document.getElementById("name").value;
+  const age = document.getElementById("age").value;
+  const phone = document.getElementById("phone").value;
+
+  const namePattern = /^[A-Za-z ]+$/;
+  if (!namePattern.test(name)) {
+    alert("Name should contain only letters");
+    return false;
+  }
+
+  if (age < 18) {
+    alert("You must be 18 or older");
+    return false;
+  }
+
+  const phonePattern = /^[0-9]{10}$/;
+  if (!phonePattern.test(phone)) {
+    alert("Phone number must be exactly 10 digits");
+    return false;
+  }
+
+  localStorage.setItem("name", name);
+  localStorage.setItem("age", age);
+  localStorage.setItem("phone", phone);
+
+  window.location.href = "dashboard.html";
+  return false;
+}
+</script>
+
+</body>
+</html> 
