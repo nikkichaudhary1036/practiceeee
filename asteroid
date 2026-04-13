@@ -1,0 +1,50 @@
+import java.util.*;
+
+public class Main {
+    public static int[] asteroidCollision(int[] asteroids) {
+        Stack<Integer> stack = new Stack<>();
+
+        for (int ast : asteroids) {
+            boolean destroyed = false;
+
+            // jab tak collision possible hai
+            while (!stack.isEmpty() && ast < 0 && stack.peek() > 0) {
+                
+                if (Math.abs(ast) > stack.peek()) {
+                    // stack wala chhota hai → destroy
+                    stack.pop();
+                    continue;
+                } 
+                else if (Math.abs(ast) == stack.peek()) {
+                    // dono same → dono destroy
+                    stack.pop();
+                }
+                
+                // current asteroid destroy ho gaya
+                destroyed = true;
+                break;
+            }
+
+            // agar current bach gaya → push karo
+            if (!destroyed) {
+                stack.push(ast);
+            }
+        }
+
+        // stack → array
+        int[] result = new int[stack.size()];
+        for (int i = result.length - 1; i >= 0; i--) {
+            result[i] = stack.pop();
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int[] asteroids = {5, 10, -5};
+
+        int[] result = asteroidCollision(asteroids);
+
+        System.out.println(Arrays.toString(result));
+    }
+}
